@@ -51,29 +51,26 @@ Follow these steps to set up the Azure DevOps pipeline for this GitHub repositor
 - **Example Pipeline YAML** (placed in `.azure-pipelines/ci-pipeline.yml`):
 
 ```yaml
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
 trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
 steps:
-- task: UseNode@2
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
 - script: |
-    echo "Hello, Azure DevOps!"
-    npm install
-    npm run build
-  displayName: 'Build Application'
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
-  displayName: 'Publish Build Artifacts'
 ```
 
 ### 3. Pushing Code Changes
